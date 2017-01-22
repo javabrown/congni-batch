@@ -1,6 +1,6 @@
 # congni-batch
 
-Application to evaluate multiple data files(csv) in spring batch process and returnd the processd result.
+Test application to evaluate multiple csv-formatted data files using spring-batch and returnd the processed result.
 
 Usage:
 
