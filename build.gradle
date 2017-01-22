@@ -1,0 +1,60 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+mainClassName = 'javabrown.cognitest.Runner'
+
+run { //gradlew run -PTransactionInputFile='file:///c:\\test\\transaction-input-data.csv'
+    if ( project.hasProperty("TransactionInputFile") ) {
+        args Eval.me(TransactionInputFile)
+    }
+}
+
+sourceSets {
+    classes {
+        resources.srcDirs = ["src/main/", "src/main/resources/"]
+        //resources.srcDirs = ["src/main/java/"]
+        //resources.includes = [ "**/*" ]
+    }
+}
+
+jar {
+    baseName = 'poc2'
+    version = '0.1.0'
+
+    from('src/main/') {
+        include '**/*.*'
+    }
+
+    manifest {
+        attributes 'Implementation-Title': 'Poc3', 'Implementation-Version': 1.0, 'Main-Class': mainClassName
+
+    }
+
+    //Fat jar
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'org.springframework:spring-context:4.0.5.RELEASE'
+    compile 'joda-time:joda-time:2.2'
+    compile 'org.springframework.batch:spring-batch-core:3.0.7.RELEASE'
+    compile group: 'org.springframework', name: 'spring-oxm', version: '4.0.5.RELEASE'
+    compile group: 'org.springframework.batch', name: 'spring-batch-infrastructure', version: '3.0.7.RELEASE'
+
+    runtime 'org.springframework:spring-context:4.0.5.RELEASE'
+    runtime 'joda-time:joda-time:2.2'
+    runtime 'org.springframework.batch:spring-batch-core:3.0.7.RELEASE'
+    runtime group: 'org.springframework', name: 'spring-oxm', version: '4.0.5.RELEASE'
+    runtime group: 'org.springframework.batch', name: 'spring-batch-infrastructure', version: '3.0.7.RELEASE'
+}
+

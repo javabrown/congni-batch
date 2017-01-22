@@ -1,0 +1,11 @@
+PolicyId,Policy holder Id,First Name,Last Name,PlanId,Coverage Start Date,Coverage End Date,Individual accumulated deductible for this year (2016),Family accumulated deductible for this year (2016)
+100001,1000011,Sam,Collins,P001,1/1/2004,,0.00 ,0
+100001,1000012,Jina,Collons,P001,12/5/2008,,0.00 ,0
+100001,1000013,Nancy,Collins,P001,5/6/2010,,0.00 ,0
+100001,1000014,Jack,Collins,P001,7/8/2013,,0.00 ,0
+100002,1000021,Daniel,Hayer,P002,1/1/2012,,"4,000.00 ","4,000.00 "
+100003,1000031,Sally,Adams,P001,1/1/2016,,"2,500.00 ","2,500.00 "
+100004,1000041,Jacke,Seegers,P003,1/1/2009,5/31/2016,"5,560.42 ","5,560.42 "
+100005,1000051,Tom,Haskel,P001,1/1/2011,,"6,712.34 ","6,712.34 "
+100006,1000061,San,Mildred,P001,1/5/2016,,"3,250.61 ","3,250.61 "
+100007,1000071,Mack,Lee,P003,12/6/2011,9/1/2016,"4,460.82 ","4,460.82 "
