@@ -1,49 +1,32 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
-mainClassName = 'javabrown.cognitest.Runner'
 
-run { //gradlew run -PTransactionInputFile='file:///c:\\test\\transaction-input-data.csv'
-    if ( project.hasProperty("TransactionInputFile") ) {
-        args Eval.me(TransactionInputFile)
-    }
-}
-
-sourceSets {
-    classes {
-        resources.srcDirs = ["src/main/", "src/main/resources/"]
-        //resources.srcDirs = ["src/main/java/"]
-        //resources.includes = [ "**/*" ]
-    }
-}
-
-jar {
-    baseName = 'poc2'
-    version = '0.1.0'
-
-    from('src/main/') {
-        include '**/*.*'
-    }
-
-    manifest {
-        attributes 'Implementation-Title': 'Poc3', 'Implementation-Version': 1.0, 'Main-Class': mainClassName
-
-    }
-
-    //Fat jar
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-
-    }
-}
-
-repositories {
-    mavenCentral()
-}
+version = '1.0'
+mainClassName = 'com.javabrown.cognitest.Runner'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+
+//task fatJar(type: Jar) {
+//    manifest {
+//        attributes 'Implementation-Title': 'Gradle Jar File Example',
+//                'Implementation-Version': version,
+//                'Main-Class': mainClassName
+//    }
+//    baseName = project.name + '-all'
+//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+//}
+
+//Get dependencies from Maven central repository
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+//Project dependencies
 dependencies {
     compile 'org.springframework:spring-context:4.0.5.RELEASE'
     compile 'joda-time:joda-time:2.2'
@@ -58,3 +41,19 @@ dependencies {
     runtime group: 'org.springframework.batch', name: 'spring-batch-infrastructure', version: '3.0.7.RELEASE'
 }
 
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.2.4"
+    }
+}
+
+apply plugin: "com.github.johnrengelman.shadow"
+
+shadowJar {
+    mergeServiceFiles('META-INF/spring.*')
+}

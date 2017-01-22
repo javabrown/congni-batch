@@ -1,4 +1,4 @@
-package javabrown.cognitest.data.mapper;
+package com.javabrown.cognitest.data.mapper;
 
 public class PlanDescription {
     private String _planId;
@@ -34,7 +34,9 @@ public class PlanDescription {
         return _annualDeductableFamily;
     }
 
-    public void setPlanId(String planId) { _planId = planId; }
+    public void setPlanId(String planId) {
+        _planId = planId;
+    }
 
     public void setPlanName(String planName) {
         _planName = planName;

@@ -1,4 +1,4 @@
-package javabrown.cognitest.data.mapper;
+package com.javabrown.cognitest.data.mapper;
 
 import java.util.ArrayList;
 

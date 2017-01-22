@@ -1,11 +1,11 @@
-package javabrown.cognitest.data;
+package com.javabrown.cognitest.data;
 
-import javabrown.cognitest.data.InputTransactionData;
-import javabrown.cognitest.data.ProcessedTransactionData;
-import javabrown.cognitest.data.mapper.PlanDescription;
-import javabrown.cognitest.data.mapper.PolicyData;
-import javabrown.cognitest.utils.PlanDataCache;
-import javabrown.cognitest.utils.Utils;
+import com.javabrown.cognitest.data.InputTransactionData;
+import com.javabrown.cognitest.data.ProcessedTransactionData;
+import com.javabrown.cognitest.data.mapper.PlanDescription;
+import com.javabrown.cognitest.data.mapper.PolicyData;
+import com.javabrown.cognitest.utils.PlanDataCache;
+import com.javabrown.cognitest.utils.Utils;
 import org.springframework.batch.item.ItemProcessor;
 
 public class TransactionDataProcessor implements ItemProcessor<InputTransactionData, ProcessedTransactionData> {
@@ -26,7 +26,7 @@ public class TransactionDataProcessor implements ItemProcessor<InputTransactionD
         output.setCoverageSubCategory(item.getCoverageSubCategory());
         output.setDateOfService(item.getDateOfService());
 
-        if(policyData != null) {
+        if (policyData != null) {
             PlanDescription planDescription = PlanDataCache.getInstance().getPlanCoverageData().
                     getPlanDescription(policyData.getPlanId(), item.getCoverageMainCategory(), item.getCoverageSubCategory());
 
@@ -43,7 +43,6 @@ public class TransactionDataProcessor implements ItemProcessor<InputTransactionD
         //System.out.println("Processing...OUTPUT==>[ " + output + " ]  Input ==> [ "+ item + " ]");
         return output;
     }
-
 
 
 }

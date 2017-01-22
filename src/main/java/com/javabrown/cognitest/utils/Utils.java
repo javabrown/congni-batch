@@ -1,4 +1,4 @@
-package javabrown.cognitest.utils;
+package com.javabrown.cognitest.utils;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -13,7 +13,7 @@ public class Utils {
     }
 
     public static boolean isEmpty(String... stringArray) {
-        if(stringArray == null || stringArray.length == 0){
+        if (stringArray == null || stringArray.length == 0) {
             return true;
         }
 
@@ -26,38 +26,43 @@ public class Utils {
         return false;
     }
 
-    public static String getPolicyKey(String policyId, String policyHolderId){
+    public static String getPolicyKey(String policyId, String policyHolderId) {
         return String.format("policyId=%s|policyHolderId=%s", policyId, policyHolderId);
     }
 
-    public static void disableConsoleOutput(){
+    public static void disableConsoleOutput() {
         System.setOut(new PrintStream(new OutputStream() {
-            @Override public void write(int b) throws IOException {}
+            @Override
+            public void write(int b) throws IOException {
+            }
         }));
     }
 
-    public static void enableConsoleOutput(){
+    public static void enableConsoleOutput() {
         System.setOut(_out);
     }
 
-    public static void println(String str){
+    public static void println(String str) {
         _realSystemOut.println(str);
     }
 
     private static class NullOutputStream extends OutputStream {
         @Override
-        public void write(int b){
+        public void write(int b) {
             return;
         }
+
         @Override
-        public void write(byte[] b){
+        public void write(byte[] b) {
             return;
         }
+
         @Override
-        public void write(byte[] b, int off, int len){
+        public void write(byte[] b, int off, int len) {
             return;
         }
-        public NullOutputStream(){
+
+        public NullOutputStream() {
         }
     }
 }

@@ -1,17 +1,16 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:batch="http://www.springframework.org/schema/batch"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/batch
-    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
-    http://www.springframework.org/schema/beans 
-    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+		http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
+    <import resource="step0.xml"/>
+    <import resource="step1.xml"/>
+    <import resource="step2.xml"/>
+    <import resource="step3.xml"/>
 
-    <import resource="classpath:step0.xml"/>
-    <import resource="classpath:step1.xml"/>
-    <import resource="classpath:step2.xml"/>
-    <import resource="classpath:step3.xml"/>
-
-    <batch:job id="job" restartable="false" xmlns="http://www.springframework.org/schema/batch">
+    <batch:job id="job" restartable="false">
 
         <batch:step id="step1" next="step2">
             <batch:tasklet>

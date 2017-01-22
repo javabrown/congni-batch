@@ -1,26 +1,26 @@
-package javabrown.cognitest.saver;
+package com.javabrown.cognitest.saver;
 
-import javabrown.cognitest.data.mapper.PlanCoverageData;
-import javabrown.cognitest.utils.PlanDataCache;
+import com.javabrown.cognitest.data.mapper.PlanCoverageData;
+import com.javabrown.cognitest.utils.PlanDataCache;
 import org.springframework.batch.item.ItemWriter;
+
 import java.util.List;
 
 public class PlanCoverageSaver implements ItemWriter<PlanCoverageData> {
-    private static String  _tmpMainCategory = "";
+    private static String _tmpMainCategory = "";
 
     @Override
     public void write(List<? extends PlanCoverageData> items) throws Exception {
 
-        items.forEach((coverage)->{
-            if(coverage.isEmpty()){
+        items.forEach((coverage) -> {
+            if (coverage.isEmpty()) {
                 return;
             }
 
-            if(coverage.isMainCategory()){
+            if (coverage.isMainCategory()) {
                 _tmpMainCategory = coverage.getMainCategory();
                 PlanDataCache.getInstance().getPlanCoverageData().createNewMainCaregory(_tmpMainCategory);
-            }
-            else {
+            } else {
                 PlanDataCache.getInstance().getPlanCoverageData().addSubCategoryUnderMainCaregory(_tmpMainCategory,
                         coverage.makeSubCategory());
             }
@@ -28,11 +28,11 @@ public class PlanCoverageSaver implements ItemWriter<PlanCoverageData> {
 
     }
 
-    private boolean isMainCategory(PlanCoverageData data){
-        return data.getMainCategory() != null &&  data.getMainCategory().trim().length() > 0;
+    private boolean isMainCategory(PlanCoverageData data) {
+        return data.getMainCategory() != null && data.getMainCategory().trim().length() > 0;
     }
 
-    private boolean isEmptyRow(PlanCoverageData data){
-        return data.getMainCategory() != null &&  data.getMainCategory().trim().length() > 0;
+    private boolean isEmptyRow(PlanCoverageData data) {
+        return data.getMainCategory() != null && data.getMainCategory().trim().length() > 0;
     }
 }

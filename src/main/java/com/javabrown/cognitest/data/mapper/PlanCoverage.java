@@ -1,10 +1,11 @@
-package javabrown.cognitest.data.mapper;
+package com.javabrown.cognitest.data.mapper;
 
-import javabrown.cognitest.utils.PlanDataCache;
+import com.javabrown.cognitest.utils.PlanDataCache;
 
 import java.util.*;
 import java.util.stream.Stream;
-import static javabrown.cognitest.utils.KeysI.*;
+
+import static com.javabrown.cognitest.utils.KeysI.*;
 
 public class PlanCoverage implements PlanCoverageI {
 
@@ -40,11 +41,11 @@ public class PlanCoverage implements PlanCoverageI {
     }
 
     @Override
-    public String getPlanRuleApplied(String planId, String mainCategory, String subCategory){
+    public String getPlanRuleApplied(String planId, String mainCategory, String subCategory) {
         PlanDetails detail = _planMap.get(new PlanKey(planId, mainCategory, subCategory));
         String rule = "";
 
-        if(detail != null) {
+        if (detail != null) {
             rule = detail.getPlanRule();
         }
 
@@ -52,11 +53,11 @@ public class PlanCoverage implements PlanCoverageI {
     }
 
     @Override
-    public PlanDescription getPlanDescription(String planId, String mainCategory, String subCategory){
+    public PlanDescription getPlanDescription(String planId, String mainCategory, String subCategory) {
         PlanDetails detail = _planMap.get(new PlanKey(planId, mainCategory, subCategory));
         PlanDescription planDescription = new PlanDescription();
 
-        if(detail != null) {
+        if (detail != null) {
             System.out.println(new PlanKey(planId, mainCategory, subCategory));
             planDescription = detail.getPlanDescription();
         }

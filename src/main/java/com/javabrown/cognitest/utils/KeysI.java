@@ -1,4 +1,4 @@
-package javabrown.cognitest.utils;
+package com.javabrown.cognitest.utils;
 
 public interface KeysI {
     String CLASSPATH = "classpath";
@@ -12,10 +12,10 @@ public interface KeysI {
     String P003 = "P003";
 
     String SUCCESS_TEMPLATE = String.format("*********************************\nDone!!\nProcessed output transaction " +
-            "File ==> \"%s/outputs/transactionProcessed.csv\"\n*********************************",
+                    "File ==> \"%s/processed-transaction.csv\"\n*********************************",
             System.getProperty("user.dir"));
 
-    String FAILURE_TEMPLATE = String.format("********************************\nProcessing Failed!!\nPlease validate your"+
-                    " Input-Transaction-File Path/Format/Data. \n********************************");
+    String FAILURE_TEMPLATE = String.format("********************************\nProcessing Failed!!\nPlease validate your" +
+            " Input-Transaction-File Path/Format/Data. \n********************************");
 
 }

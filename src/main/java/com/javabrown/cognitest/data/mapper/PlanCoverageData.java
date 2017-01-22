@@ -1,6 +1,6 @@
-package javabrown.cognitest.data.mapper;
+package com.javabrown.cognitest.data.mapper;
 
-import javabrown.cognitest.utils.Utils;
+import com.javabrown.cognitest.utils.Utils;
 
 public class PlanCoverageData {
     private String mainCategory;
@@ -50,15 +50,15 @@ public class PlanCoverageData {
     }
 
     public boolean isEmpty(String... str) {
-        return Utils.isEmpty(this.mainCategory) &&  Utils.isEmpty(this.subCategory,
+        return Utils.isEmpty(this.mainCategory) && Utils.isEmpty(this.subCategory,
                 this.planId_p001, this.planId_p002, this.planId_p003);
     }
 
-    public boolean isMainCategory(){
+    public boolean isMainCategory() {
         return !Utils.isEmpty(this.mainCategory);
     }
 
-    public SubCategory makeSubCategory(){
+    public SubCategory makeSubCategory() {
         return new SubCategory(this.subCategory, this.planId_p001, this.planId_p002, this.planId_p003);
     }
 }

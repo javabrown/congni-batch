@@ -1,17 +1,12 @@
-package javabrown.cognitest.data;
+package com.javabrown.cognitest.data;
 
-public class ProcessedTransactionData {
+public class InputTransactionData {
     private String _policyId;
     private String _policyHolderId;
     private String _dateOfService;
     private String _coverageMainCategory;
     private String _coverageSubCategory;
     private String _billedAmount;
-    private String _policyHolderPays;
-    private String _planPays;
-    private String _ruleUsed;
-    private String _individualAccumulatedDeductible;
-    private String _familyAccumulatedDeductible;
 
     public String getPolicyId() {
         return _policyId;
@@ -61,43 +56,15 @@ public class ProcessedTransactionData {
         _billedAmount = billedAmount;
     }
 
-    public String getPolicyHolderPays() {
-        return _policyHolderPays;
-    }
-
-    public void setPolicyHolderPays(String policyHolderPays) {
-        _policyHolderPays = policyHolderPays;
-    }
-
-    public String getPlanPays() {
-        return _planPays;
-    }
-
-    public void setPlanPays(String planPays) {
-        _planPays = planPays;
-    }
-
-    public String getRuleUsed() {
-        return _ruleUsed;
-    }
-
-    public void setRuleUsed(String ruleUsed) {
-        _ruleUsed = ruleUsed;
-    }
-
-    public String getIndividualAccumulatedDeductible() {
-        return _individualAccumulatedDeductible;
-    }
-
-    public void setIndividualAccumulatedDeductible(String individualAccumulatedDeductible) {
-        _individualAccumulatedDeductible = individualAccumulatedDeductible;
-    }
-
-    public String getFamilyAccumulatedDeductible() {
-        return _familyAccumulatedDeductible;
-    }
-
-    public void setFamilyAccumulatedDeductible(String familyAccumulatedDeductible) {
-        _familyAccumulatedDeductible = familyAccumulatedDeductible;
+    @Override
+    public String toString() {
+        return "InputTransactionData{" +
+                "policyId='" + _policyId + '\'' +
+                ", policyHolderId='" + _policyHolderId + '\'' +
+                ", dateOfService='" + _dateOfService + '\'' +
+                ", coverageMainCategory='" + _coverageMainCategory + '\'' +
+                ", coverageSubCategory='" + _coverageSubCategory + '\'' +
+                ", billedAmount='" + _billedAmount + '\'' +
+                '}';
     }
 }
