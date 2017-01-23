@@ -1,7 +1,6 @@
 package com.javabrown.cognitest;
 
-import com.javabrown.cognitest.data.mapper.PlanDescription;
-import com.javabrown.cognitest.utils.KeysI;
+import com.javabrown.cognitest.data.mapper.impl.PlanDescription;
 import com.javabrown.cognitest.utils.PlanDataCache;
 import com.javabrown.cognitest.utils.Utils;
 import org.springframework.batch.core.ExitStatus;
@@ -11,13 +10,8 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
 import java.util.Map;
 
 import static com.javabrown.cognitest.utils.KeysI.*;
@@ -25,8 +19,6 @@ import static com.javabrown.cognitest.utils.KeysI.*;
 public class Runner {
 
     public static void main(String[] args) throws IOException {
-        System.out.println("===============> " + args.length);
-
         if (args.length > 0) {
             System.setProperty(INPUT_TRANSACTION_FILE, args[0]);
             Utils.disableConsoleOutput();
@@ -49,21 +41,8 @@ public class Runner {
                 System.out.println(id + ":" + planMap.get(id).toString());
             }
 
-//        Map planMap1 = PlanDataCache.getInstance().getPlanCoverageData().getPlanMap();
-//        System.out.println("Coverage Data Size:" + planMap1.size());
-//
-//        planMap1.forEach((k, v)->{
-//            System.out.println(k + ":" + v.toString());
-//        });
-//
-//        planMap1 = PlanDataCache.getInstance().getPolicyDataMap();
-//        System.out.println("Policy Data Size:" + planMap1.size());
-//
-//        planMap1.forEach((k, v)->{
-//            System.out.println(k + ":" + v.toString());
-//        });
-
             Utils.enableConsoleOutput();
+
             if (execution.getExitStatus().equals(ExitStatus.COMPLETED)) {
                 System.out.println(SUCCESS_TEMPLATE);
             } else {

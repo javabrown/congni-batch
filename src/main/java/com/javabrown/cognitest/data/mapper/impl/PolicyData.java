@@ -1,4 +1,4 @@
-package com.javabrown.cognitest.data.mapper;
+package com.javabrown.cognitest.data.mapper.impl;
 
 public class PolicyData {
     private String _policyId;

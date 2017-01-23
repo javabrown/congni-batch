@@ -37,6 +37,6 @@
 
     </bean>
 
-    <bean id="planDescription" class="com.javabrown.cognitest.data.mapper.PlanDescription" scope="prototype"/>
+    <bean id="planDescription" class="com.javabrown.cognitest.data.mapper.impl.PlanDescription" scope="prototype"/>
 
 </beans>

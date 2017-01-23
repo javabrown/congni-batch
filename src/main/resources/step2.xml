@@ -47,6 +47,6 @@
 
     </bean>
 
-    <bean id="policyData" class="com.javabrown.cognitest.data.mapper.PolicyData" scope="prototype"/>
+    <bean id="policyData" class="com.javabrown.cognitest.data.mapper.impl.PolicyData" scope="prototype"/>
 
 </beans>

@@ -47,6 +47,6 @@
 
     </bean>
 
-    <bean id="planCoverageData" class="com.javabrown.cognitest.data.mapper.PlanCoverageData" scope="prototype"/>
+    <bean id="planCoverageData" class="com.javabrown.cognitest.data.mapper.impl.PlanCoverageData" scope="prototype"/>
 
 </beans>

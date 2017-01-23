@@ -3,7 +3,7 @@ package com.javabrown.cognitest.saver;
 import java.util.List;
 
 import com.javabrown.cognitest.utils.PlanDataCache;
-import com.javabrown.cognitest.data.mapper.PlanDescription;
+import com.javabrown.cognitest.data.mapper.impl.PlanDescription;
 import org.springframework.batch.item.ItemWriter;
 
 public class PlanDescriptionSaver implements ItemWriter<PlanDescription> {

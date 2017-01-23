@@ -1,6 +1,6 @@
 package com.javabrown.cognitest.saver;
 
-import com.javabrown.cognitest.data.mapper.PlanCoverageData;
+import com.javabrown.cognitest.data.mapper.impl.PlanCoverageData;
 import com.javabrown.cognitest.utils.PlanDataCache;
 import org.springframework.batch.item.ItemWriter;
 

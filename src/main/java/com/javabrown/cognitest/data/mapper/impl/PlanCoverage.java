@@ -1,5 +1,6 @@
-package com.javabrown.cognitest.data.mapper;
+package com.javabrown.cognitest.data.mapper.impl;
 
+import com.javabrown.cognitest.data.mapper.PlanCoverageI;
 import com.javabrown.cognitest.utils.PlanDataCache;
 
 import java.util.*;
@@ -8,6 +9,7 @@ import java.util.stream.Stream;
 import static com.javabrown.cognitest.utils.KeysI.*;
 
 public class PlanCoverage implements PlanCoverageI {
+
 
     private final Map<String, List<SubCategory>> _coverageMap;
     private final Map<PlanKey, PlanDetails> _planMap;
@@ -27,8 +29,19 @@ public class PlanCoverage implements PlanCoverageI {
         _coverageMap.get(mainCategoryName).add(subCategory);
 
         Stream.of(P001, P002, P003).forEach((k) -> {
+            String rule = "";
+            if(k.equals(P001)){
+                rule = subCategory.getPt001();
+            }
+            else if(k.equals(P002)){
+                rule = subCategory.getPt002();
+            }
+            else{
+                rule = subCategory.getPt003();
+            }
+
             PlanKey planKey = new PlanKey(k, mainCategoryName, subCategory.getName());
-            PlanDetails detail = new PlanDetails(k, subCategory.getName(),
+            PlanDetails detail = new PlanDetails(k, rule,
                     PlanDataCache.getInstance().getPlanDescriptionMap().get(k));
             _planMap.put(planKey, detail);
         });
@@ -65,6 +78,18 @@ public class PlanCoverage implements PlanCoverageI {
         return planDescription;
     }
 
+    @Override
+    public String getPlanPaymentRule(String planId, String mainCategory, String subCategory) {
+        PlanDetails detail = _planMap.get(new PlanKey(planId, mainCategory, subCategory));
+        String planRule = "0%";
+
+        if (detail != null) {
+            System.out.println(new PlanKey(planId, mainCategory, subCategory));
+            planRule = detail.getPlanRule();
+        }
+
+        return planRule;
+    }
 
     private Map<PlanKey, PlanDetails> getPlanMap() {
         return _planMap;
@@ -140,59 +165,5 @@ class PlanDetails {
     }
 }
 
-class SubCategory {
-    private String name;
-    private String pt001;
-    private String pt002;
-    private String pt003;
 
-    public SubCategory(String name, String pt001, String pt002, String pt003) {
-        this.name = name;
-        this.pt001 = pt001;
-        this.pt002 = pt002;
-        this.pt003 = pt003;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPt001() {
-        return pt001;
-    }
-
-    public String getPt002() {
-        return pt002;
-    }
-
-    public String getPt003() {
-        return pt003;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SubCategory that = (SubCategory) o;
-        return Objects.equals(name, that.name) &&
-                Objects.equals(pt001, that.pt001) &&
-                Objects.equals(pt002, that.pt002) &&
-                Objects.equals(pt003, that.pt003);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, pt001, pt002, pt003);
-    }
-
-    @Override
-    public String toString() {
-        return "SubCategory{" +
-                "name='" + name + '\'' +
-                ", pt001='" + pt001 + '\'' +
-                ", pt002='" + pt002 + '\'' +
-                ", pt003='" + pt003 + '\'' +
-                '}';
-    }
-}
 

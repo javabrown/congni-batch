@@ -48,8 +48,9 @@ public class InputTransactionData {
         _coverageSubCategory = coverageSubCategory;
     }
 
-    public String getBilledAmount() {
-        return _billedAmount;
+    public Double getBilledAmount() {
+        _billedAmount = _billedAmount.replaceAll("[^\\d.]+", "");
+        return new Double(_billedAmount);
     }
 
     public void setBilledAmount(String billedAmount) {

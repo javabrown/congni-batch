@@ -1,4 +1,4 @@
-package com.javabrown.cognitest.data.mapper;
+package com.javabrown.cognitest.data.mapper.impl;
 
 public class PlanDescription {
     private String _planId;
@@ -7,7 +7,6 @@ public class PlanDescription {
     private String _estimatedPremium;
     private String _annualDeductableIndividual;
     private String _annualDeductableFamily;
-
 
     public String getPlanId() {
         return _planId;

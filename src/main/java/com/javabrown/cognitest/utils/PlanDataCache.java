@@ -1,9 +1,9 @@
 package com.javabrown.cognitest.utils;
 
-import com.javabrown.cognitest.data.mapper.PlanCoverage;
+import com.javabrown.cognitest.data.mapper.impl.PlanCoverage;
 import com.javabrown.cognitest.data.mapper.PlanCoverageI;
-import com.javabrown.cognitest.data.mapper.PlanDescription;
-import com.javabrown.cognitest.data.mapper.PolicyData;
+import com.javabrown.cognitest.data.mapper.impl.PlanDescription;
+import com.javabrown.cognitest.data.mapper.impl.PolicyData;
 
 import java.util.HashMap;
 import java.util.Map;
